@@ -1,0 +1,106 @@
+.top_movies_logo{
+    height: 50px;
+}
+
+.api_logos{
+    height: 30px;
+}
+
+.slogan{
+    font-size: small;
+    text-align: center;
+}
+
+.search_button{
+    height: 20px;
+}
+
+.input-group.md-form.form-sm.form-2 input.amber-border {
+    border: 1px solid #ffca28;
+}
+
+.home_title{
+    font-family: 'Roboto', sans-serif;
+    font-size: 100px;
+    font-style: bold;
+}
+
+.class_h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 70px;
+    color: gold;
+}
+
+.class_h3{
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    color: gold;
+}
+
+.goldenboys{
+    border-top: 1px solid gold;
+}
+
+.zombie_movies, .ww2_movies{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.zombie_movies li, .ww2_movies li{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.zombie_movies li img, .ww2_movies li img, .movie_poster{
+    max-width: 190px;
+    max-height: 250px;
+    border-radius: 12px;
+}
+
+.movie_poster_big{
+    max-width: 300px;
+    max-height: 700px;
+    border-radius: 12px;
+}
+
+.zombie_movies li h2, .ww2_movies li h2, .movie_title{
+    font-size: 1.4em;
+    padding: 10px 10px 0;
+    margin-top: auto;
+}
+
+.movie_title, .poster_box{
+    color: white;
+    text-decoration: none;
+}
+
+.interaction_icon{
+    width: 35px;
+}
+
+.movie_ratings{
+    padding: 10px;
+}
+
+.poster_box{
+    
+}
+
+/*
+#login_box{
+    padding-top: 100px;
+}
+
+nav{
+    text-align: justify;
+    text-justify: inter-word;
+}
+*/

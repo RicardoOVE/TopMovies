@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopMovies - About</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{{url_for('static',filename='css/styles.css')}}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap" rel="stylesheet">
+    
+</head>
+<body class="bg-secondary text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand d-flex flex-row" href="/">
+                    <img src="{{url_for('static',filename='images/movie-frame.png')}}" alt="TopMovies Logo" class="top_movies_logo">
+                    <div >
+                        <div>TopMovies</div>
+                        <div class="slogan">Rate & Review</div>
+                    </div>
+                </a>
+            </div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/movies">Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/about">Contact/About</a>
+                    </li>
+                    <!-- 
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Account</a>
+                    </li>
+                    -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/login_page">Log in</a>
+                            <a class="dropdown-item" href="/sign_in_page">Sign in</a>
+                            <a class="dropdown-item" href="/profile/{{session['user_id']}}">My Profile</a>
+                            <a href="/logout" class="dropdown-item">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+        </div>
+    </nav>
+    
+    <div class="mask " style="background-color: rgba(0, 0, 0, 0.4); height: 100vh;">
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-4 pt-5 pb-4">
+                    <h2>Update your TopMovies Profile, {{user.nickname}} </h2>
+                        <div id="alertmessage"></div>
+                    <form id="update_form" action="/update/user" method="post">
+                        <input type="hidden" name="user_id" value="{{user.id}}">
+                        <div class="form-group">
+                            <label for="name">Your name</label>
+                            <input type="text" id="name" name="name" class="form-control" value="{{user.name}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Nickname</label>
+                            <input type="text" class="form-control" id="nickname" name="nickname" value="{{user.nickname}}"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" class="form-control" id="email" name="email" value="{{user.email}}"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" type="date" id="password" name="password" class="form-control"></input>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm_password">Confirm password</label>
+                            <input type="password" type="date" id="confirm_password" name="confirm_password" class="form-control"></input>
+                        </div><br>
+                        <input type="submit" class="btn btn-success" value="Update Account">
+                    </form><br>
+                    <div>
+                        <h3>Delete your account :(</h3><br>
+                        <a href="/delete/user/{{user.id}}" class="btn btn-warning">
+                            Delete TopMovies Account
+                        </a>
+                    </div>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-5 pt-5 pb-4">
+                    <h2> Liked Movies</h2>
+                    {% for movies_id in movies_ids %}
+                        {% if movies_id['liked'] == 1 %}
+                    <a href="/movie/{{movies_id['movie_id']}}">{{movies_id['movie_id']}}</a>
+                        {% endif %}
+                    {% endfor %}
+                    <br>
+                    <h2> Disliked Movies</h2>
+                    {% for movies_id in disliked_ids %}
+                        {% if movies_id['disliked'] == 1 %}
+                    <a href="/movie/{{movies_id['movie_id']}}">{{movies_id['movie_id']}}</a>
+                        {% endif %}
+                    {% endfor %}
+                    <br>
+                    <h2> Favorited Movies</h2>
+                    {% for movies_id in favorited_ids %}
+                        {% if movies_id['favorited'] == 1 %}
+                    <a href="/movie/{{movies_id['movie_id']}}">{{movies_id['movie_id']}}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <div class="col-2"></div>
+            </div>
+        </div>
+        
+    </div>
+    
+    <script src="{{url_for('static',filename='js/update.js')}}" ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

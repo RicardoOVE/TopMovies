@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopMovies - Sign in</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{{url_for('static',filename='css/styles.css')}}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap" rel="stylesheet">
+</head>
+<body class="bg-secondary text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand d-flex flex-row" href="/">
+                    <img src="{{url_for('static',filename='images/movie-frame.png')}}" alt="TopMovies Logo" class="top_movies_logo">
+                    <div >
+                        <div>TopMovies</div>
+                        <div class="slogan">Rate & Review</div>
+                    </div>
+                </a>
+            </div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/movies">Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">Contact/About</a>
+                    </li>
+                    <!-- 
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Account</a>
+                    </li>
+                    -->
+                    <li class="nav-item dropdown active">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/login_page">Log in</a>
+                            <a class="dropdown-item" href="/sign_in_page">Sign in</a>
+                            <a class="dropdown-item" href="/profile/{{session['user_id']}}">My Profile</a>
+                        </div>
+                    </li>
+                </ul>
+        </div>
+    </nav>
+    <div class="bg-image" style="background-image: url('https://previews.123rf.com/images/hchjjl/hchjjl1506/hchjjl150601691/40716030-doodle-film-seamless-pattern-background.jpg?fj=1'); height: 100vh;">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.7); height: 100vh;">
+            <div class="d-flex justify-content-center align-items-center h-100">
+                <div class="container row">
+                    <div class="col-1"></div>
+                    <div class="col-4 pt-5" id="sign_in_box">
+                        <vid class="row">
+                            <h4>Sign in - TopMovies account</h4>
+                            <div id="alertmessage2"></div>
+                            <form id="sign_in_form" action="/sign_in" method="post">
+                                <div class="form-group">
+                                    <label for="first_name">Name</label><br>
+                                    <input type="text" id="name" name="name" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="last_name">Nickname</label><br>
+                                    <input type="text" id="nickname" name="nickname" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label><br>
+                                    <input type="text" id="email" name="email" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Password</label><br>
+                                    <input type="password" id="password" name="password" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm_password">Confirm password</label><br>
+                                    <input type="password" id="confirm_password" name="confirm_password" class="form-control"> <br>
+                                </div>
+                                <div>
+                                    <input type="submit" value="Create a TopMovies account" class="btn btn-success">
+                                </div>
+                            </form>
+                        </div>
+                    <div class="col-1 pt-5" ></div>
+                    <div class="col-4 pt-5" id="sign_in_box2">
+                        <h4>Other sign in options</h4>
+                        <p>**These are still work in progress!**</p>
+                        <button type="button" class="btn btn-outline-success mt-4 mb-4">Sign in with Google</button>
+                        <button type="button" class="btn btn-outline-info">Sign in with Facebook</button>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="{{url_for('static',filename='js/sign_in.js')}}" ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopMovies</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="{{url_for('static',filename='css/styles.css')}}" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100&display=swap" rel="stylesheet">
+    
+</head>
+<body class="bg-secondary text-white">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand d-flex flex-row" href="/">
+                    <img src="{{url_for('static',filename='images/movie-frame.png')}}" alt="TopMovies Logo" class="top_movies_logo">
+                    <div >
+                        <div>TopMovies</div>
+                        <div class="slogan">Rate & Review</div>
+                    </div>
+                </a>
+            </div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/movies">Movies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">Contact/About</a>
+                    </li>
+                    <!-- 
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Account</a>
+                    </li>
+                    -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/login_page">Log in</a>
+                            <a class="dropdown-item" href="/sign_in_page">Sign in</a>
+                            <a class="dropdown-item" href="/profile/{{session['user_id']}}">My Profile</a>
+                        </div>
+                    </li>
+                </ul>
+        </div>
+    </nav>
+    <div class="bg-image" style="background-image: url('https://media.istockphoto.com/vectors/cartoon-cute-hand-drawn-cinema-seamless-pattern-vector-id955087880?s=612x612'); height: 100vh;">
+        <div class="mask " style="background-color: rgba(121, 19, 19, 0.85); height: 100vh;">
+            <div class="d-flex justify-content-center align-items-center h-1000">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-7 pt-5">
+                            <h1 class="home_title">Rate & review</h1>
+                            <h1 class="home_title pb-4">movies</h1>
+                            <div class="alert alert-info">
+                                Be advised, you must be logged in to be able to check the "Movies" tab!!
+                            </div>
+                            
+                            <p>Check all the latests movie & series releases, see what's trending, read about our recommended movies, rate the movies you like, dislike the movies you hate and add those movies you love to your favorite list! </p> <hr>
+                            <h4>Our page's features:</h4>
+                            <p>- Like or dislike movies</p>
+                            <p>- Add movies to your favorites</p>
+                            <a type="button" class="btn btn-outline-warning mt-4 mb-4" href="/sign_in_page">GET STARTED</a>
+                            <p>This page uses:</p>
+                            <p>TheMovieDB API <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg" alt="The Movie DB logo" class="top_movies_logo"></p>
+                            <p>The RapidAPI <img src="{{url_for('static',filename='images/rapidapi.svg')}}" alt="Rapidapi Logo" class="api_logos"> & The Online Movie Database <img src="{{url_for('static',filename='images/images.avif')}}" alt="API Dojo Logo" class="api_logos"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="{{url_for('static',filename='js/index.js')}}" ></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
